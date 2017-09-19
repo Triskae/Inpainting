@@ -19,8 +19,8 @@ public class BoundingBox{	// define the domain size
 
     public BoundingBox(int[] a) {
         bb = a;
-        width = bb[2];
-        height = bb[3];
+        width = bb[2]-bb[0];
+        height = bb[3]-bb[1];
         size = width*height;
         nbEdgesHorizontal= width * (height + 1);
         nbEdgesVertical = height * (width +1);
@@ -43,7 +43,7 @@ public class BoundingBox{	// define the domain size
         BufferedImage image;
         try
         {
-            image = ImageIO.read(new File(chaine)); // eventually C:\\ImageTest\\pic2.jpg
+            image = ImageIO.read(new File(chaine)); 
             width = image.getWidth();
             height= image.getHeight();
             bb = new int[]{0,0,width,height};
@@ -63,6 +63,7 @@ public class BoundingBox{	// define the domain size
     }
 
     public BoundingBox(BoundingBox boundingBox) { // method clone ?
+ 
        this.bb=boundingBox.bb;
        this.width = boundingBox.width;
        this.height= boundingBox.height;
