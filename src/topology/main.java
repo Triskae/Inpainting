@@ -3,8 +3,10 @@ package topology;
 import java.io.IOException;
 
 /**
- * Created by bl602538 on 19/09/2017.
+ * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas
  */
+
+
 public class main {
     public static void main(String[] args) throws IOException {
     	Color c = new Color(255,255,255);

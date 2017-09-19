@@ -33,7 +33,10 @@ public class Point {
 
 	public boolean onBorder() {
 		return (i == 0 && !this.onCorner()) ||(j==0 && !this.onCorner());
+		//TODO
+		//Vérifier cette fonction
 	}
+
 
 	@Override public String toString() {
 		return null;
