@@ -61,8 +61,15 @@ public class BoundingBox{	// define the domain size
 
 
     }
+    
+    
 
-    public BoundingBox(BoundingBox boundingBox) { // method clone ?
+    public int[] getBb() {
+		return bb;
+	}
+
+
+	public BoundingBox(BoundingBox boundingBox) { // method clone ?
  
        this.bb=boundingBox.bb;
        this.width = boundingBox.width;

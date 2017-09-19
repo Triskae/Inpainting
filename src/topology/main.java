@@ -16,8 +16,9 @@ public class main {
     	System.out.println(b);
     	System.out.println(Byte.toUnsignedInt(b));
     	System.out.println(c.toString());
-    	BoundingBox bb = new BoundingBox("P:\\Desktop\\Capture.png");
-    	System.out.println(bb.width);
+    	BoundingBox bb = new BoundingBox( new int []{0,0,2,5});
+    	Point p = new Point(bb,0,3);
+    	System.out.println(p.onCorner());
     	
     	
     }
