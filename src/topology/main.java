@@ -10,9 +10,13 @@ import java.io.IOException;
 public class main {
     public static void main(String[] args) throws IOException {
     	Color c = new Color(255,255,255);
-    	Color c1 = new Color(0,0,0);
+    	Color c1 = new Color(255,255,255);
+    	Color c2 = new Color(0,0,0);
+
+
     	System.out.println(Color.dist(c,c1));
-    	
+    	System.out.println(Color.dist(c,c2));
+
 
     	byte b = (byte) 255;
     	System.out.println(b);
