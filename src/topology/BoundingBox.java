@@ -57,9 +57,6 @@ public class BoundingBox{	// define the domain size
         {
             e.printStackTrace();
         }
-
-
-
     }
     
     

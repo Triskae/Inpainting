@@ -17,17 +17,17 @@ class ColorTest {
 
     @org.junit.jupiter.api.Test
     void getB() {
-        assertEquals(255, c1.getB());
+        assertEquals(255, Byte.toUnsignedInt(c1.getB()));
     }
 
     @org.junit.jupiter.api.Test
     void getG() {
-        assertEquals(132, c5.getB());
+        assertEquals(132, Byte.toUnsignedInt(c5.getG()));
     }
 
     @org.junit.jupiter.api.Test
     void getR() {
-        assertEquals(125, c4.getR());
+        assertEquals(125, Byte.toUnsignedInt(c4.getR()));
     }
 
     @org.junit.jupiter.api.Test

@@ -35,8 +35,7 @@ public class Color{ 			// Color (B,G,R)
 	public byte getR(){
 		return val[2];
 	}
-	public static int dist(Color c1 ,Color c2)
-	{
+	public static int dist(Color c1 ,Color c2) { // distance cartesienne avec conversion des bytes en int non singés
 
 		int b =(int) Math.pow((c2.getB()&0xFF) - (c1.getB() &0xFF),2);
 		int g = (int) Math.pow((c2.getG() &0xFF) - (c1.getG() &0xFF),2);
@@ -53,7 +52,7 @@ public class Color{ 			// Color (B,G,R)
 
 	boolean isequalto(Color c1) {
 
-		if(dist(this,c1) == 0) return true;
+		if(dist(this,c1) == 0) return true; // Si la distance entre deux couleurs est 0 alors les couleurs sont identiques
 		else return false;
 	}
 
