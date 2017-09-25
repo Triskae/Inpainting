@@ -14,10 +14,31 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
-public class Matrix {
+public class Matrix extends BoundingBox {
 
-    /**
-     * TODO
-     * Finir la classe Matrix
-     */
+    public Color[][]val;
+    public Matrix(String fileName) throws IOException {
+        super(fileName);
+        BufferedImage image;
+        image = ImageIO.read(new File(fileName));
+        val = new Color[this.width][this.height];
+        for ( int i = 0 ; i< width ; i++){
+            for ( int j=0 ; j< height; j++){
+                val[i][j] = Color.rgbToColor(image.getRGB(i,j));
+            }
+        }
+    }
+    public void save(String fileName) throws IOException{
+        BufferedImage image = new BufferedImage(super.width,super.height, BufferedImage.TYPE_INT_RGB);
+        int rgb;
+        for (int i = 0; i < width ; i ++){
+            for (int j =0;j< height;j++){
+                rgb = val[i][j].colorToRgb();
+                image.setRGB(i,j,rgb);
+            }
+        }
+        File output = new File(fileName+".bmp");
+        ImageIO.write(image,"bmp",output);
+
+    }
 }

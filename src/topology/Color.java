@@ -42,6 +42,17 @@ public class Color{ 			// Color (B,G,R)
 		int r = (int) Math.pow((c2.getR() &0xFF) - (c1.getR() &0xFF),2);
 		return b+g+r;
 	}
+	public static Color rgbToColor(int rgb){
+		int red = (rgb >> 16) & 0xff;
+		int green = (rgb >> 8) & 0xff;
+		int blue = (rgb) & 0xff;
+		return new Color(blue,green,red);
+	}
+	public  int colorToRgb(){
+		int rgb = ((this.getR()&0x0ff)<<16)|((this.getG()&0x0ff)<<8)|(this.getB()&0x0ff);
+		return rgb;
+
+	}
 
 	public void set(Color c1) {
 		val[0] = c1.getB();

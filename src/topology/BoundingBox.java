@@ -39,11 +39,11 @@ public class BoundingBox{	// define the domain size
         nbEdges = nbEdgesHorizontal+nbEdgesVertical;
 
     }
-    public BoundingBox(String chaine)  throws IOException {
+    public BoundingBox(String fileName)  throws IOException {
         BufferedImage image;
         try
         {
-            image = ImageIO.read(new File(chaine)); 
+            image = ImageIO.read(new File(fileName));
             width = image.getWidth();
             height= image.getHeight();
             bb = new int[]{0,0,width,height};
