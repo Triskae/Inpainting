@@ -1,7 +1,6 @@
 package topology;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import javax.imageio.ImageIO;
 import javax.xml.soap.SOAPPart;
@@ -30,9 +29,8 @@ public class main {
     	System.out.println(b);
     	System.out.println(Byte.toUnsignedInt(b));
     	System.out.println(c.toString());
-    //	BoundingBox bb = new BoundingBox("C:\\Users\\lucas\\Downloads\\bungee-free.bmp");
 		BufferedImage bbb;
-		bbb = ImageIO.read(new File("C:\\Users\\lucas\\Downloads\\bungee-free.bmp"));
+		/**bbb = ImageIO.read(new File("test.jpg"));
 		int a =bbb.getRGB(0,0);
 		System.out.println(a);
 
@@ -44,10 +42,11 @@ public class main {
 		int g = ccc.colorToRgb();
 		System.out.println(g);
 		System.out.println("lol");
-		System.out.println(Color.rgbToColor(g));
-		Matrix m = new Matrix("C:\\Users\\lucas\\Desktop\\DH4CvoQUMAAecz5.jpg");
+		System.out.println(Color.rgbToColor(g));**/
+
+		Matrix m = new Matrix("//home//filipe//Documents//inPainting//inpainting//src//topology//test.jpg");
 		System.out.println(m.val[5][25]);
-		m.save("C:\\Users\\lucas\\Desktop\\marchestp");
+		m.save(".");
 
 
     	
