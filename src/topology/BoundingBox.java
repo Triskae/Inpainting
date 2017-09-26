@@ -16,6 +16,10 @@ public class BoundingBox{	// define the domain size
     public int width,height,size;
     int nbEdges,nbEdgesHorizontal,nbEdgesVertical;
 
+    public BoundingBox() {
+
+    }
+
 
     public BoundingBox(int[] a) {
         bb = a;
@@ -51,7 +55,6 @@ public class BoundingBox{	// define the domain size
             nbEdgesHorizontal= width * (height + 1);
             nbEdgesVertical = height * (width +1);
             nbEdges = nbEdgesHorizontal+nbEdgesVertical;
-
         }
         catch (IOException e)
         {
