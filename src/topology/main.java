@@ -46,7 +46,7 @@ public class main {
 
 		Matrix m = new Matrix("//home//filipe//Documents//inPainting//inpainting//src//topology//test.jpg");
 		System.out.println(m.val[5][25]);
-		m.save(".");
+		m.save("test");
 
 
     	
