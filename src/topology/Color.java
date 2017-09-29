@@ -35,13 +35,27 @@ public class Color{ 			// Color (B,G,R)
 	public byte getR(){
 		return val[2];
 	}
-	public static int dist(Color c1 ,Color c2) { // distance cartesienne avec conversion des bytes en int non singés
+
+
+	/**
+	 * Cette fonction calcule la distance cartesienne avec conversion des bytes en int non signés
+	 * @param c1 La première couleur
+	 * @param c2 La deuxième couleur
+	 * @return
+	 */
+	public static int dist(Color c1 ,Color c2) {
 
 		int b =(int) Math.pow((c2.getB()&0xFF) - (c1.getB() &0xFF),2);
 		int g = (int) Math.pow((c2.getG() &0xFF) - (c1.getG() &0xFF),2);
 		int r = (int) Math.pow((c2.getR() &0xFF) - (c1.getR() &0xFF),2);
 		return b+g+r;
 	}
+
+	/**
+	 * Fonction qui convertis
+	 * @param rgb
+	 * @return
+	 */
 	public static Color rgbToColor(int rgb){
 		int red = (rgb >> 16) & 0xff;
 		int green = (rgb >> 8) & 0xff;
