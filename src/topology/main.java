@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
 public class main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
     	Color c = new Color(255,255,255);
     	Color c1 = new Color(255,255,255);
     	Color c2 = new Color(0,0,0);
@@ -44,9 +44,17 @@ public class main {
 		System.out.println("lol");
 		System.out.println(Color.rgbToColor(g));**/
 
-		Matrix m = new Matrix("//home//filipe//Documents//inPainting//inpainting//src//topology//test.jpg");
-		System.out.println(m.val[5][25]);
-		m.save("test");
+		Matrix m = new Matrix("P:\\Desktop\\téléchargement.png");
+        System.out.println(m.val[0][0]);
+
+        Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
+        System.out.println(mm.val[0][0]);
+
+        BoundingBox bb = new BoundingBox("P:\\Desktop\\mask.bmp");
+        System.out.println(mm.touchedBy(new Point(bb,10,10)));
+        m.applyMask(mm);
+        m.save("P:\\Desktop\\camarchestp");
+
 
 
     	

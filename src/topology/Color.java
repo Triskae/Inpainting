@@ -1,7 +1,6 @@
 /**
  * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas
  */
-
 package topology;
 
 
@@ -84,6 +83,7 @@ public class Color{ 			// Color (B,G,R)
 
 
 	@Override public String toString() {
+
 
 		return "Colors value : (" + Byte.toUnsignedInt(val[0])+","+Byte.toUnsignedInt(val[1])+","+Byte.toUnsignedInt(val[2])+")";
 	}

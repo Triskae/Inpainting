@@ -55,6 +55,13 @@ public class Matrix extends BoundingBox {
         }
         File output = new File(fileName+".bmp");
         ImageIO.write(image,"bmp",output);
+    }
+    public void applyMask(Mask mask){
+        for(int i = 0 ; i<width ; i++){
+            for (int j =0 ; j<height;j++){
+                if(mask.val[i][j]) val[i][j].set(new Color(0,0,0));
+            }
+        }
 
     }
 }

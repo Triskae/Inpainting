@@ -10,8 +10,9 @@ public class Point {
 	public int i,j;
 	BoundingBox bb;
 	
-	public Point(BoundingBox bb,int a,int b) {
+	public Point(BoundingBox bb,int a,int b) throws Exception {
 		this.bb = bb;
+		if ( i < bb.bb[0] || i> bb.width || j<bb.bb[1] || j>bb.height) throw new Exception("Le point ne fait pas partie de la bounding box");
 		i=a;
 		j=b;
 
@@ -41,6 +42,11 @@ public class Point {
 
 	}
 
+	public int getI() {
+		return i;
+	}
 
-
+	public int getJ() {
+		return j;
+	}
 }
