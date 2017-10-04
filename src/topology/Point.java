@@ -38,9 +38,11 @@ public class Point {
 
 
 	@Override public String toString() {
-		return null;
+		return "("+i+","+j+")";
 
 	}
+
+	//TODO Faire outerEdge
 
 	public int getI() {
 		return i;

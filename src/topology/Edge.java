@@ -12,9 +12,21 @@ public class Edge {
     public int label;
     private BoundingBox bb;
 
-    public Point[] border() {
 
-        return null;
+    public Edge(int direction, int i, int j, int orientation, int label, BoundingBox bb) {
+        this.direction = direction;
+        this.i = i;
+        this.j = j;
+        this.orientation = orientation;
+        this.label = label;
+        this.bb = bb;
+    }
+
+    public Point[] border() throws Exception {
+        Point[] pp = {new Point(bb,i,j), new Point(bb,i+orientation*v[direction][0],j+orientation*v[direction][1])} ;
+
+        return pp;
+
     }
 
     @Override
@@ -23,7 +35,5 @@ public class Edge {
         return null;
     }
 
-    public Edge(BoundingBox bb,int i1,int i2,int i3,int i4) {
 
-    }
 }
