@@ -23,7 +23,7 @@ public class Edge {
     }
 
     public Point[] border() throws Exception {
-        Point[] pp = {new Point(bb,i,j), new Point(bb,i+orientation*v[direction][0],j+orientation*v[direction][1])} ;
+        Point[] pp = {new Point(bb,i,j), new Point(bb,i+orientation*v[direction][0],j+orientation*v[direction][1])} ; // retournekes deux points constitutifs d'une instance de Edge
 
         return pp;
 
@@ -31,8 +31,14 @@ public class Edge {
 
     @Override
     public String toString() {
-
-        return null;
+        return "Edge{" +
+                "direction=" + direction +
+                ", i=" + i +
+                ", j=" + j +
+                ", orientation=" + orientation +
+                ", label=" + label +
+                ", bb=" + bb +
+                '}';
     }
 
 
