@@ -5,6 +5,9 @@
 
 package topology;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Point {
 
 	public int i,j;
@@ -42,7 +45,32 @@ public class Point {
 
 	}
 
-	//TODO Faire outerEdge
+	public Edge[] outerEdges() throws Exception {
+		Edge[] tampon = new Edge[4];
+		List<Edge> outerEdge = new ArrayList<Edge>();
+		int y =0;
+		tampon[0] = new Edge(0, i, j, 1, 0, bb);
+		tampon[1] = new Edge(0, i, j, -1, 1, bb);
+		tampon[2] = new Edge(1, i, j, 1, 2, bb);
+		tampon[3] = new Edge(1, i, j, -1, 3, bb);
+
+			for (int i = 0; i < 4; i++) {
+				if (tampon[i].border()[1].onBb())
+				{
+					System.out.println(tampon[i].border()[1]);
+					outerEdge.add(tampon[i]);
+					y ++;
+				}
+
+			}
+		return  outerEdge.toArray(new Edge[outerEdge.size()]);
+	}
+
+
+	public boolean onBb(){
+
+		return  ( i >= bb.bb[0] && i<= bb.width && j>=bb.bb[1] && j<= bb.height ) ;
+	}
 
 	public int getI() {
 		return i;

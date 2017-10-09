@@ -23,8 +23,11 @@ public class Edge {
     }
 
     public Point[] border() throws Exception {
-        Point[] pp = {new Point(bb,i,j), new Point(bb,i+orientation*v[direction][0],j+orientation*v[direction][1])} ; // retournekes deux points constitutifs d'une instance de Edge
-
+         Point[] pp = {new Point(bb,i,j), new Point(bb,i+orientation*v[direction][0],j+orientation*v[direction][1])} ; // retournekes deux points constitutifs d'une instance de Edge
+        /*int d1=(1-orientation)/2;
+        int d2=(1+orientation)/2;
+        Point[] pp = { new Point(bb,i+d1*v[direction][0],j+d1*v[direction][1]), new Point(bb,i+d2*v[direction][0],j+d2*v[direction][1])} ; // retournekes deux points constitutifs d'une instance de Edge
+*/
         return pp;
 
     }

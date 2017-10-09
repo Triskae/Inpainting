@@ -44,25 +44,28 @@ public class main {
 		System.out.println("lol");
 		System.out.println(Color.rgbToColor(g));**/
 
-		Matrix m = new Matrix("P:\\Desktop\\téléchargement.png");
-        System.out.println(m.val[0][0]);
+		//Matrix m = new Matrix("P:\\Desktop\\téléchargement.png");
+        //System.out.println(m.val[0][0]);
 
-        Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
-        System.out.println(mm.val[0][0]);
+        //Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
+        //System.out.println(mm.val[0][0]);
 
-        BoundingBox bb = new BoundingBox("P:\\Desktop\\mask.bmp");
-        System.out.println(mm.touchedBy(new Point(bb,10,10)));
-        m.applyMask(mm);
-        m.save("P:\\Desktop\\camarchestp");
-        Edge e = new Edge(1,1,1,1,78,bb);
+        BoundingBox bb = new BoundingBox("C:\\users\\lucas\\Desktop\\bungee-free.bmp");
+        //System.out.println(mm.touchedBy(new Point(bb,10,10)));
+       // m.applyMask(mm);
+       // m.save("P:\\Desktop\\camarchestp");
+        Edge e = new Edge(0,4,4,-1,78,bb);
         Edge filipe = new Edge(0,0,1,1,138,bb);
 		System.out.println(e.border()[1]);
 		System.out.println(filipe.border()[1]);
+		Edge[] edges = new Point(bb,0,0).outerEdges();
+		System.out.println(edges.length);
 
 
 
-    	
-    	
+
+
+
     }
 }
 
