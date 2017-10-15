@@ -11,11 +11,11 @@ import java.util.List;
 public class Point {
 
 	public int i,j;
-	BoundingBox bb;
+	public BoundingBox bb;
 	
 	public Point(BoundingBox bb,int a,int b) throws Exception {
 		this.bb = bb;
-		if ( i < bb.bb[0] || i> bb.width || j<bb.bb[1] || j>bb.height) throw new Exception("Le point ne fait pas partie de la bounding box");
+		//if ( i < bb.bb[0] || i> bb.width || j<bb.bb[1] || j>bb.height) throw new Exception("Le point ne fait pas partie de la bounding box");
 		i=a;
 		j=b;
 
@@ -48,7 +48,6 @@ public class Point {
 	public Edge[] outerEdges() throws Exception {
 		Edge[] tampon = new Edge[4];
 		List<Edge> outerEdge = new ArrayList<Edge>();
-		int y =0;
 		tampon[0] = new Edge(0, i, j, 1, 0, bb);
 		tampon[1] = new Edge(0, i, j, -1, 1, bb);
 		tampon[2] = new Edge(1, i, j, 1, 2, bb);
@@ -57,9 +56,7 @@ public class Point {
 			for (int i = 0; i < 4; i++) {
 				if (tampon[i].border()[1].onBb())
 				{
-					System.out.println(tampon[i].border()[1]);
 					outerEdge.add(tampon[i]);
-					y ++;
 				}
 
 			}
