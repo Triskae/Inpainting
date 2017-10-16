@@ -55,11 +55,27 @@ public class main {
        // m.applyMask(mm);
        // m.save("P:\\Desktop\\camarchestp");
         Edge e = new Edge(0,4,4,-1,78,bb);
-        Edge filipe = new Edge(0,0,1,1,138,bb);
+        Edge filipe = new Edge(5,5,1,1,138,bb);
 		System.out.println(e.border()[1]);
-		System.out.println(filipe.border()[1]);
-		Edge[] edges = new Point(bb,0,0).outerEdges();
+		Edge[] edges = new Point(bb,5,5).outerEdges();
+		System.out.println(edges[0].border()[1]);
+		System.out.println(edges[1].border()[1]);
+		System.out.println(edges[2].border()[1]);
+		System.out.println(edges[3].border()[1]);
+
 		System.out.println(edges.length);
+		Patch p = new Patch(new Point(bb,640,200),400,bb);
+		System.out.println(p.toString());
+		Matrix m = new Matrix("C:\\users\\lucas\\Desktop\\test.bmp");
+		Mask mm = new Mask("C:\\users\\lucas\\Desktop\\mask.bmp",new Color(0,0,0));
+		System.out.println(mm.val[0][0]);
+		m.applyMask(mm);
+		m.save("C:\\users\\lucas\\Desktop\\testwithmask.bmp");
+		Boundary bbbb = new Boundary(mm);
+		for (Edge edg : bbbb.edges){
+			System.out.println(edg);
+
+		}
 
 
 

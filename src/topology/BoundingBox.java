@@ -80,5 +80,16 @@ public class BoundingBox{	// define the domain size
        this.nbEdgesHorizontal=boundingBox.nbEdgesHorizontal;
     }
 
-
+    @Override
+    public String toString() {
+        return "BoundingBox{" +
+                "bb[] =" + bb[0] + "," + bb[1]+ ","  +bb[2]+ ","+  bb[3] +
+                " width=" + width +
+                ", height=" + height +
+                ", size=" + size +
+                ", nbEdges=" + nbEdges +
+                ", nbEdgesHorizontal=" + nbEdgesHorizontal +
+                ", nbEdgesVertical=" + nbEdgesVertical +
+                '}';
+    }
 }
