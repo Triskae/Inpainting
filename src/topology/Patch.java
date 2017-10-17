@@ -17,7 +17,16 @@ public class Patch {
                 '}';
     }
 
+    public Point getPoint() {
+        return point;
+    }
+
+    public BoundingBox getBoundingBox() {
+        return boundingBox;
+    }
+
     public Patch(Point p , int halfwidth, BoundingBox window) throws Exception {
+
         point = p;
         int imin,imax,jmin,jmax;
         Point left,right,top,bottom;
@@ -44,7 +53,7 @@ public class Patch {
         }
         bottom = new Point(window,p.getI(),p.getJ()+halfwidth);
         if(bottom.onBb()){
-           jmax = halfwidth;
+            jmax = halfwidth;
         }
         else{
             jmax = p.bb.height - p.getJ();

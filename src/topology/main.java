@@ -50,7 +50,7 @@ public class main {
         //Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
         //System.out.println(mm.val[0][0]);
 
-        BoundingBox bb = new BoundingBox("C:\\users\\lucas\\Desktop\\bungee-free.bmp");
+        BoundingBox bb = new BoundingBox("P:\\Desktop\\image.bmp");
         //System.out.println(mm.touchedBy(new Point(bb,10,10)));
        // m.applyMask(mm);
        // m.save("P:\\Desktop\\camarchestp");
@@ -64,24 +64,17 @@ public class main {
 		System.out.println(edges[3].border()[1]);
 
 		System.out.println(edges.length);
-		Patch p = new Patch(new Point(bb,640,200),400,bb);
+		Patch p = new Patch(new Point(bb,1,1),2,bb);
 		System.out.println(p.toString());
-		Matrix m = new Matrix("C:\\users\\lucas\\Desktop\\test.bmp");
-		Mask mm = new Mask("C:\\users\\lucas\\Desktop\\mask.bmp",new Color(0,0,0));
+		Matrix m = new Matrix("P:\\Desktop\\image.bmp");
+		Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
 		System.out.println(mm.val[0][0]);
 		m.applyMask(mm);
-		m.save("C:\\users\\lucas\\Desktop\\testwithmask.bmp");
+		m.save("P:\\Desktop\\imagewithmask");
 		Boundary bbbb = new Boundary(mm);
-		for (Edge edg : bbbb.edges){
-			System.out.println(edg);
-
-		}
-
-
-
-
-
-
-    }
+		System.out.println(bb);
+		System.out.println(p);
+		System.out.println(bb.crop(p));
+	}
 }
 
