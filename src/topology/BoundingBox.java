@@ -93,10 +93,10 @@ public class BoundingBox{	// define the domain size
                 '}';
     }
     public BoundingBox crop(Patch patch){
-        int imin =  bb[0]+Math.abs(patch.getPoint().getI()-patch.getBoundingBox().getBb()[0]);
-        int jmin =  bb[1]+Math.abs(patch.getPoint().getJ()-patch.getBoundingBox().getBb()[1]);
-        int imax =  bb[2]-Math.abs(patch.getPoint().getI()-patch.getBoundingBox().getBb()[2]);
-        int jmax =  bb[3]-Math.abs(patch.getPoint().getJ()-patch.getBoundingBox().getBb()[3]);
+        int imin =  bb[0]+Math.abs(patch.getBoundingBox().getBb()[0]);
+        int jmin =  bb[1]+Math.abs(patch.getBoundingBox().getBb()[1]);
+        int imax =  bb[2]-Math.abs(patch.getBoundingBox().getBb()[2]);
+        int jmax =  bb[3]-Math.abs(patch.getBoundingBox().getBb()[3]);
         return new BoundingBox(new int[]{imin,jmin,imax,jmax});
 
     }
