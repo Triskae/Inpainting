@@ -7,19 +7,26 @@ package topology;
 public class Edge {
 
     private static int[][] v={{1,0},{0,1}};
-    private int direction,i,j;
+    public int direction,i,j;
     public int orientation;
     public int label;
     private BoundingBox bb;
 
 
-    public Edge(int direction, int i, int j, int orientation, int label, BoundingBox bb) {
+    public Edge(int direction, int i, int j, int orientation, BoundingBox bb) {
         this.direction = direction;
         this.i = i;
         this.j = j;
         this.orientation = orientation;
-        this.label = label;
         this.bb = bb;
+        // definition unique du label en fonction de la direction du edge
+        if (direction == 0) {
+            label= j*bb.width + i;
+        }
+        else{
+            label = bb.width*(bb.height+1) + i*bb.height +j;
+        }
+
     }
 
     public Point[] border() throws Exception {

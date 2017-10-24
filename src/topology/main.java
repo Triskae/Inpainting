@@ -54,8 +54,8 @@ public class main {
         //System.out.println(mm.touchedBy(new Point(bb,10,10)));
        // m.applyMask(mm);
        // m.save("P:\\Desktop\\camarchestp");
-        Edge e = new Edge(0,4,4,-1,78,bb);
-        Edge filipe = new Edge(5,5,1,1,138,bb);
+        Edge e = new Edge(0,4,4,-1,bb);
+        Edge filipe = new Edge(5,5,1,1,bb);
 		System.out.println(e.border()[1]);
 		Edge[] edges = new Point(bb,5,5).outerEdges();
 		System.out.println(edges[0].border()[1]);

@@ -48,10 +48,10 @@ public class Point {
 	public Edge[] outerEdges() throws Exception {
 		Edge[] tampon = new Edge[4];
 		List<Edge> outerEdge = new ArrayList<Edge>();
-		tampon[0] = new Edge(0, i, j, 1, 0, bb);
-		tampon[1] = new Edge(0, i, j, -1, 1, bb);
-		tampon[2] = new Edge(1, i, j, 1, 2, bb);
-		tampon[3] = new Edge(1, i, j, -1, 3, bb);
+		tampon[0] = new Edge(0, i, j, 1, bb);
+		tampon[1] = new Edge(0, i, j, -1, bb);
+		tampon[2] = new Edge(1, i, j, 1, bb);
+		tampon[3] = new Edge(1, i, j, -1, bb);
 
 			for (int i = 0; i < 4; i++) {
 				if (tampon[i].border()[1].onBb())

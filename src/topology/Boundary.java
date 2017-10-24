@@ -20,10 +20,10 @@ public class Boundary {
             {
                 for (int j = 0; j < bb.height; j++) {
                     if (m.val[i][j] != m.val[i - 1][j] && status % 2 == 0) {
-                        edges.add(new Edge(1, i-1, j, -1, 0, bb)); // edge vers le haut
+                        edges.add(new Edge(1, i-1, j, -1, bb)); // edge vers le haut
                     }
                     if (m.val[i][j] != m.val[i - 1][j] && status % 2 == 1) {
-                        edges.add(new Edge(1, i-1, j, 1, 0, bb)); // edge vers le bas
+                        edges.add(new Edge(1, i-1, j, 1, bb)); // edge vers le bas
                     }
                     status ++;
 
@@ -36,10 +36,10 @@ public class Boundary {
 
             for (int i = 0; i < bb.width; i++) {
                 if (m.val[i][j] != m.val[i][j - 1] && status % 2 == 0) {
-                    edges.add(new Edge(0, i, j-1, 1, 0, bb)); // edge vers la droite
+                    edges.add(new Edge(0, i, j-1, 1, bb)); // edge vers la droite
                 }
                 if (m.val[i][j] != m.val[i][j - 1] && status % 2 == 1) {
-                    edges.add(new Edge(0, i, j-1, -1, 0, bb)); // edge vers la gauche
+                    edges.add(new Edge(0, i, j-1, -1, bb)); // edge vers la gauche
                 }
                 status ++;
 
