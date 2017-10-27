@@ -12,6 +12,10 @@ public class Boundary {
     BoundingBox bb;
 
 
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+
     public Boundary(Mask m) throws Exception {
         bb = new BoundingBox(m);
         int status = 0; // si status est pair m.val[i][j]=false si status est impaire m.val[i][j]=true
@@ -21,6 +25,7 @@ public class Boundary {
                 for (int j = 0; j < bb.height; j++) {
                     if (m.val[i][j] != m.val[i - 1][j] && status % 2 == 0) {
                         edges.add(new Edge(1, i-1, j, -1, bb)); // edge vers le haut
+
                     }
                     if (m.val[i][j] != m.val[i - 1][j] && status % 2 == 1) {
                         edges.add(new Edge(1, i-1, j, 1, bb)); // edge vers le bas
