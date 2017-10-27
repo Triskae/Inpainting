@@ -12,6 +12,8 @@ public class Tag {
     private boolean[] active;
     private int nbActive;
     private Boundary boundary;
+    private boolean availableSeedPoint = true;
+    private boolean isAvailablePoint = true;
     public Tag(Boundary b){
         boundary = b;
         index = new int[b.bb.nbEdges];
@@ -24,9 +26,33 @@ public class Tag {
         }
 
     }
-    /*public Point SeedPoint(){
+    public Point SeedPoint() throws Exception {
+        if(availableSeedPoint){
+            for (Edge e : boundary.getEdges()) {
+                if (active[index[e.label]]) {
+                    if (e.border()[0].onBorder() || e.border()[0].onCorner()) { // est ce que le corner est on border ?
+                        active[index[e.label]] = false;
+                        nbActive--;
+                        return e.border()[0];
+                    }
+                }
+            }
+            availableSeedPoint = false;
+        }
+        if(isAvailablePoint){
+            for (Edge e : boundary.getEdges()) {
+                if (active[index[e.label]]) {
+                    active[index[e.label]] = false;
+                    nbActive--;
+                    return e.border()[0];
+                }
+                isAvailablePoint = false;
+            }
 
-    }*/
+        }
+
+        return null;
+    }
     public int indexActiveOuterEdge(Point p) throws Exception {
         Edge[] outerEdges = p.outerEdges();
         for(int i =0 ; i < outerEdges.length ; i++){
@@ -41,5 +67,6 @@ public class Tag {
         return -1;
 
     }
+
 
 }
