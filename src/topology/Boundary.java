@@ -12,9 +12,7 @@ public class Boundary {
     BoundingBox bb;
 
 
-    public ArrayList<Edge> getEdges() {
-        return edges;
-    }
+
 
     public Boundary(Mask m) throws Exception {
         bb = new BoundingBox(m);
@@ -64,5 +62,8 @@ public class Boundary {
                 "\n" + "Edges=" + "\n"
                 + allEdge +
 +                '}';
+    }
+    public ArrayList<Edge> getEdges() {
+        return edges;
     }
 }

@@ -10,6 +10,9 @@ import java.util.Arrays;
 public class Tag {
     private int[] index;
     private boolean[] active;
+
+
+
     private int nbActive;
     private Boundary boundary;
     private boolean availableSeedPoint = true;
@@ -66,6 +69,29 @@ public class Tag {
         }
         return -1;
 
+    }
+    public int[] getIndex() {
+        return index;
+    }
+
+    public boolean[] getActive() {
+        return active;
+    }
+
+    public int getNbActive() {
+        return nbActive;
+    }
+
+    public Boundary getBoundary() {
+        return boundary;
+    }
+
+    public boolean isAvailableSeedPoint() {
+        return availableSeedPoint;
+    }
+
+    public boolean isAvailablePoint() {
+        return isAvailablePoint;
     }
 
 

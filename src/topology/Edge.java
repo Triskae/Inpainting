@@ -20,14 +20,16 @@ public class Edge {
         this.orientation = orientation;
         this.bb = bb;
         // definition unique du label en fonction de la direction du edge
-        if (direction == 0) {
-            label= j*bb.width + i;
-        }
-        else{
-            label = bb.width*(bb.height+1) + i*bb.height +j;
-        }
+        if(direction==0)
+        {label=	 (i+(orientation-1)/2*v[direction][0])
+                +(j+(orientation-1)/2*v[direction][1])*bb.width;}
+        else
+        {label=bb.nbEdgesHorizontal+
+                (i+(orientation-1)/2*v[direction][0])*bb.height
+                +(j+(orientation-1)/2*v[direction][1]);}
 
-    }
+
+}
 
     public Point[] border() throws Exception {
          Point[] pp = {new Point(bb,i,j), new Point(bb,i+orientation*v[direction][0],j+orientation*v[direction][1])} ; // retournekes deux points constitutifs d'une instance de Edge

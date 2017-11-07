@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas
@@ -50,12 +52,12 @@ public class main {
         //Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
         //System.out.println(mm.val[0][0]);
 
-        BoundingBox bb = new BoundingBox("C:\\users\\lucas\\Desktop\\test.bmp");
+        BoundingBox bb = new BoundingBox("P:\\Desktop\\test.bmp");
         //System.out.println(mm.touchedBy(new Point(bb,10,10)));
        // m.applyMask(mm);
        // m.save("P:\\Desktop\\camarchestp");
         Edge e = new Edge(0,4,4,-1,bb);
-        Edge filipe = new Edge(5,5,1,1,bb);
+      //  Edge filipe = new Edge(5,5,1,1,bb);
 		System.out.println(e.border()[1]);
 		Edge[] edges = new Point(bb,5,5).outerEdges();
 		System.out.println(edges[0].border()[1]);
@@ -66,16 +68,18 @@ public class main {
 		System.out.println(edges.length);
 		Patch p = new Patch(new Point(bb,5,2),4,bb);
 		System.out.println(p.toString());
-		Matrix m = new Matrix("C:\\users\\lucas\\Desktop\\test.bmp");
-		Mask mm = new Mask("C:\\users\\lucas\\Desktop\\mask.bmp",new Color(0,0,0));
+		Matrix m = new Matrix("P:\\Desktop\\test.bmp");
+		Mask mm = new Mask("P:\\Desktop\\mask.bmp",new Color(0,0,0));
 		System.out.println(mm.val[0][0]);
 		m.applyMask(mm);
-		m.save("C:\\users\\lucas\\Desktop\\imagewithmask");
-		System.out.println(bb);
-		System.out.println(p);
-		System.out.println(bb.crop(p));
+		m.save("P:\\Desktop\\imagewithmask");
 		Boundary laBoundary = new Boundary(mm);
 		System.out.println(laBoundary);
+		Tag t = new Tag(laBoundary);
+		for(int i = 0 ; i<bb.nbEdges;i++){
+			System.out.println(t.getIndex()[i]);
+		}
+		System.out.println(laBoundary.edges.size());
 
 
 		}
