@@ -10,9 +10,6 @@ import java.util.Arrays;
 public class Tag {
     private int[] index;
     private boolean[] active;
-
-
-
     private int nbActive;
     private Boundary boundary;
     private boolean availableSeedPoint = true;
