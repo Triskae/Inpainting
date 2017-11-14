@@ -12,7 +12,11 @@ public class Components {
     private int size(){
         return components.size();
     }
-    public Components(Boundary b){
-                                    //TODO Constructeur Components aucune infos sur le site a demander au prof
-    }
-}
+    public Components(Boundary b) throws Exception {
+        components=new ArrayList<Component>();
+        Tag tag=new Tag(b);
+        Point seedPoint=tag.SeedPoint();
+        while(seedPoint!=null) {
+            Component newComponent=new Component(tag,seedPoint);
+            components.add(newComponent);
+            seedPoint=tag.SeedPoint();}}}       //TODO Constructeur Components aucune infos sur le site a demander au prof
