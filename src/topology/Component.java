@@ -8,7 +8,9 @@ package topology;
 import java.util.ArrayList;
 
 public class Component {
+
     private ArrayList<Point> points;
+
     public Component(Tag t,Point p) throws Exception {
         points = new ArrayList<Point>();
         Point point = p;
@@ -24,10 +26,8 @@ public class Component {
     public String toString() {
         String temp ="Component= ";
         for(Point p : points){
-            temp+= p.toString() +" , ";
+            temp+= p.toString() + " , ";
         }
         return temp;
-
-
     }
 }

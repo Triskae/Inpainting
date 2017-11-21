@@ -17,6 +17,7 @@ public class Inpainting {
     private Mask m;
     private int[][] penMask;
     private BoundingBox window;
+
     public Inpainting(Matrix matrix,Mask mask) throws Exception {
         if(!Arrays.equals(matrix.getBb(),mask.getBb())) throw new Exception("Les bounding box ne correspondent pas");
         image = matrix;
@@ -29,34 +30,51 @@ public class Inpainting {
                 else penMask[i][j]=0;
             }
         }
+    }
+
+    public Inpainting() {
 
     }
+
     private BoundingBox searchingBox(Component component, int i) {
+
         return null;
     }
     private void copyPatch(Point point, Patch patch) throws Exception {
         int halfwidth = (patch.getBoundingBox().getBb()[3]-patch.getBoundingBox().getBb()[0])/2;
         Patch copypatch = new Patch(point,halfwidth,window);
-        for(int i = patch.getBoundingBox().getBb()[0]; i<patch.getBoundingBox().getBb()[2];i++){
+        for(int i = patch.getBoundingBox().getBb()[0]; i<patch.getBoundingBox().getBb()[2];i++) {
             for(int j =patch.getBoundingBox().getBb()[1]; i<patch.getBoundingBox().getBb()[3];i++){
                 if(m.val[i][j]){
-
                 }
             }
         }
+    }
 
+    public int[] argmin(double[][] tab) {
+        double min = tab[0][0];
+        int[] temp = new int[2];
+        Arrays.fill(temp,0);
+        for(int i=0; i<tab.length; i++) {
+            for(int j=0; j<tab.length; j++) {
+                if(tab[i][j]<min){
+                    temp[0]=i;
+                    temp[1]=j;
+                }
+            }
+        }
+        return temp;
     }
-    private int[] argmin(double[][] tab) {
-        return null;
-    }
+
     private Point best_match(Patch patch, BoundingBox bb) {
         return null;
     }
+
     public void restore(int i, int j)  throws IOException {
 
     }
-    public static void main(String[] tab) throws IOException, ParseException {
 
+    public static void main(String[] tab) throws IOException, ParseException {
 
     }
 
