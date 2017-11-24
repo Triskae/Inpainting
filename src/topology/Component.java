@@ -22,6 +22,10 @@ public class Component {
         }
     }
 
+    public ArrayList<Point> getPoints() {
+        return points;
+    }
+
     @Override
     public String toString() {
         String temp ="Component= ";

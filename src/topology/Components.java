@@ -19,4 +19,4 @@ public class Components {
         while(seedPoint!=null) {
             Component newComponent=new Component(tag,seedPoint);
             components.add(newComponent);
-            seedPoint=tag.SeedPoint();}}}       //TODO Constructeur Components aucune infos sur le site a demander au prof
+            seedPoint=tag.SeedPoint();}}}
