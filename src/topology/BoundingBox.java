@@ -4,10 +4,11 @@
 
 
 package topology;
-import java.awt.image.*;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class BoundingBox{	// define the domain size
 
@@ -27,6 +28,29 @@ public class BoundingBox{	// define the domain size
         nbEdges = nbEdgesHorizontal+nbEdgesVertical;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getNbEdges() {
+        return nbEdges;
+    }
+
+    public int getNbEdgesHorizontal() {
+        return nbEdgesHorizontal;
+    }
+
+    public int getNbEdgesVertical() {
+        return nbEdgesVertical;
+    }
 
     public BoundingBox(BufferedImage image) {
 

@@ -1,15 +1,6 @@
 package topology;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
-import javax.imageio.ImageIO;
-import javax.xml.soap.SOAPPart;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas

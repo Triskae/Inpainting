@@ -1,11 +1,5 @@
 package inpainting;
 
-import org.junit.Before;
-import org.junit.Test;
-import topology.Mask;
-
-import static org.junit.Assert.*;
-
 /**
  * Created by bl602538 on 21/11/2017.
  */
