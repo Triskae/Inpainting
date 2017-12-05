@@ -27,7 +27,23 @@ public class Tag {
 
     }
     public Point SeedPoint() throws Exception {
-        if(availableSeedPoint){
+        // We look for boundary points first
+        for(int k=0;k<active.length;k++)
+            if(active[k]){
+                Edge edge=boundary.edges.get(k);
+                Point point=edge.border()[0];
+                if(point.onBorder()) return point;}
+        // If none found, we look for inner points
+        for(int k=0;k<active.length;k++)
+            if(active[k]){
+                Edge edge=boundary.edges.get(k);
+                Point point=edge.border()[0];
+                return point;}
+        return null;
+    }
+
+
+        /*if(availableSeedPoint){
             for (Edge e : boundary.getEdges()) {
                 if (active[index[e.label]]) {
                     if (e.border()[0].onBorder() || e.border()[0].onCorner()) { // est ce que le corner est on border ?
@@ -52,9 +68,26 @@ public class Tag {
         }
 
         return null;
-    }
+    }*/
     public int indexActiveOuterEdge(Point p) throws Exception {
-        Edge[] outerEdges = p.outerEdges();
+
+        Edge[] test=p.outerEdges();
+        for (Edge edge:p.outerEdges())
+        {
+            int k=index[edge.label];
+            if(k!=-1)
+                if(boundary.edges.get(k).orientation==edge.orientation)
+                    if(active[k]) return k;
+        }
+        return -1;
+    }
+
+    public void setNbActive(int nbActive) {
+        this.nbActive = nbActive;
+    }
+
+
+        /*Edge[] outerEdges = p.outerEdges();
         for(int i =0 ; i < outerEdges.length ; i++){
             if(boundary.getEdges().contains(outerEdges[i]));{
                 if(active[index[outerEdges[i].label]]){
@@ -66,7 +99,10 @@ public class Tag {
         }
         return -1;
 
-    }
+
+    }*/
+
+
     public int[] getIndex() {
         return index;
     }

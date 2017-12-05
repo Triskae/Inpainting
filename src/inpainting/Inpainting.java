@@ -5,13 +5,23 @@
 
 package inpainting;
 
-import org.apache.commons.cli.*;
-import topology.*;
-
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Arrays;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Options;
+
+import topology.Boundary;
+import topology.BoundingBox;
+import topology.Color;
+import topology.Component;
+import topology.Components;
+import topology.Mask;
+import topology.Matrix;
+import topology.Patch;
+import topology.Point;
 public class Inpainting {
+
     private static  int tgv=3*255*255+1;
     private Matrix image;
     private Mask m;
@@ -22,7 +32,7 @@ public class Inpainting {
         if(!Arrays.equals(matrix.getBb(),mask.getBb())) throw new Exception("Les bounding box ne correspondent pas");
         image = matrix;
         m=mask;
-        window = m;
+        window = mask;
         penMask = new int[window.width][window.height];
         for(int i =0 ; i<window.width;i++){
             for (int j=0;j<window.height;j++){
@@ -30,10 +40,6 @@ public class Inpainting {
                 else penMask[i][j]=0;
             }
         }
-    }
-
-    public Inpainting() {
-
     }
 
     private BoundingBox searchingBox(Component component, int i) {
@@ -51,7 +57,7 @@ public class Inpainting {
                 Math.min(bb[3]+i,window.height)});
     }
     private void copyPatch(Point point, Patch patch) throws Exception {
-        int halfwidth = (patch.getBoundingBox().getBb()[3]-patch.getBoundingBox().getBb()[0])/2;
+      /*  int halfwidth = (patch.getBoundingBox().getBb()[3]-patch.getBoundingBox().getBb()[0])/2;
         Patch copypatch = new Patch(point,halfwidth,window);
         for(int i = patch.getBoundingBox().getBb()[0]; i<patch.getBoundingBox().getBb()[2];i++) {
             for(int j =patch.getBoundingBox().getBb()[1]; i<patch.getBoundingBox().getBb()[3];i++){
@@ -63,22 +69,44 @@ public class Inpainting {
                     m.val[I][J]=false;
                 }
             }
-        }
-    }
+        } */
+        int i=point.getI();
+        int j=point.getJ();
+        for(int dx=patch.boundingBox.bb[0];dx<patch.boundingBox.bb[2];dx++)
+            for(int dy=patch.boundingBox.bb[1];dy<patch.boundingBox.bb[3];dy++)
+            {
+                int I=patch.point.i+dx;
+                int J=patch.point.j+dy;
+                if(m.val[I][J])
+                    image.val[I][J].set(image.val[i+dx][j+dy]);
+                m.val[I][J]=false;
+    }}
 
     public int[] argmin(double[][] tab) {
-        double min = tab[0][0];
+
+        double currentMin=tab[0][0];
+        int besti=0;int bestj=0;
+        for(int i=0;i<tab.length;i++)
+            for(int j=0;j<tab[i].length;j++)
+                if(currentMin>=tab[i][j])
+                {
+                    currentMin=tab[i][j];
+                    besti=i;bestj=j;
+                }
+        return new int[]{besti,bestj};
+        
+        /*double min = tab[0][0];
         int[] temp = new int[2];
         Arrays.fill(temp,0);
         for(int i=0; i<tab.length; i++) {
-            for(int j=0; j<tab.length; j++) {
+            for(int j=0; j<tab[i].length; j++) {
                 if(tab[i][j]<min){
                     temp[0]=i;
                     temp[1]=j;
                 }
             }
         }
-        return temp;
+        return temp;*/
     }
 
     private Point best_match(Patch patch, BoundingBox bb) throws Exception {
@@ -94,9 +122,12 @@ public class Inpainting {
             for(int j=0;j<searchBox.height;j++) norms[i][j]=0;		// A priori inutile
         for(int dx=patch.boundingBox.bb[0];dx<patch.boundingBox.bb[2];dx++)
             for(int dy=patch.boundingBox.bb[1];dy<patch.boundingBox.bb[3];dy++){
-                int I=patch.point.i+dx;			int J=patch.point.j+dy;
-                int i_min=searchBox.bb[0]+dx; 	int i_max=searchBox.bb[2]+dx;
-                int j_min=searchBox.bb[1]+dy;	int j_max=searchBox.bb[3]+dy;
+                int I=patch.point.i+dx;
+                int J=patch.point.j+dy;
+                int i_min=searchBox.bb[0]+dx;
+                int j_min=searchBox.bb[1]+dy;
+                int i_max=searchBox.bb[2]+dx;
+                int j_max=searchBox.bb[3]+dy;
                 // penalization of patch intersectin the mask
                 for(int k=0;k<searchBox.width;k++) for(int l=0;l<searchBox.height;l++)
                     norms[k][l]+=penMask[i_min+k][j_min+l];
@@ -114,8 +145,10 @@ public class Inpainting {
         Boundary b=new Boundary(m);
 
         Components C=new Components(b);
+        System.out.println(b.getEdges().size());
         while (C.size()!=0){
             int k=0;
+            System.out.println("test");
             for(Component component:C.getComponents()){
                 k+=1;
                 BoundingBox searchBox=null;
@@ -136,7 +169,6 @@ public class Inpainting {
             if(searchWidth!=0) searchWidth+=halfwidth;
         }
         System.out.println("Done");
-
     }
 
     public static void main(String[] tab) throws Exception {
@@ -158,21 +190,16 @@ public class Inpainting {
             Mask mask = new Mask(maskPath,new Color(0,0,0));
             Matrix matrix = new Matrix(imagePath);
             Inpainting inpainting = new Inpainting(matrix,mask);
-            matrix.applyMask(mask);
 
             searchWidth = matrix.getWidth();
             if(c.hasOption("s")){
                 searchWidth = Integer.parseInt(c.getOptionValue("s"));
             }
             inpainting.restore(halfwidth,searchWidth);
-            matrix.save(newImagePath);
-            matrix.save(newImagePath);
+            inpainting.image.save(newImagePath);
         }
         else{
             System.out.println("Erreur syntaxe arguments -p -m -i et -o obligatoires");
         }
-
-
     }
-
 }

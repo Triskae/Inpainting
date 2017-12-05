@@ -15,7 +15,35 @@ public class Boundary {
 
 
     public Boundary(Mask m) throws Exception {
-        bb = new BoundingBox(m);
+
+        bb=m;
+        edges=new ArrayList<Edge>();
+        // vertical edges T|F and F|T set to +1 and - 1 respectively
+        for(int i=0;i<m.width-1;i++)
+            for(int j=0;j<m.height;j++)
+            {
+                if((m.val[i][j]) && (!m.val[i+1][j]))
+                    edges.add(new Edge(1,i+1,j,1, m));
+                if((!m.val[i][j]) && (m.val[i+1][j]))
+                    edges.add(new Edge(1,i+1,j+1,-1, m));
+            }
+			/*
+			  horizontal edges
+			 	T   F
+			 	-   -   set to -1 and +1 respectively
+			 	F   T
+			 */
+        for(int i=0;i<m.width;i++)
+            for(int j=0;j<m.height-1;j++)
+            {
+                if((m.val[i][j]) && (!m.val[i][j+1]))
+                    edges.add(new Edge(0,i+1,j+1,-1, m));
+                if((!m.val[i][j]) && (m.val[i][j+1]))
+                    edges.add(new Edge(0,i,j+1,1, m));
+            }
+
+
+        /*bb = new BoundingBox(m);
         int status = 0; // si status est pair m.val[i][j]=false si status est impaire m.val[i][j]=true
         edges = new ArrayList<Edge>();
         for (int i = 1; i < bb.width; i++) { //left to right
@@ -47,7 +75,7 @@ public class Boundary {
                 status ++;
 
             }
-        }
+        }*/
     }
 
     @Override
