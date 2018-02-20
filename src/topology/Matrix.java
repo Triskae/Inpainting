@@ -1,8 +1,3 @@
-/**
- * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas
- */
-
-
 package topology;
 
 import javax.imageio.ImageIO;
@@ -25,7 +20,7 @@ public class Matrix extends BoundingBox {
         super(fileName);
         BufferedImage image;
         image = ImageIO.read(new File(fileName));
-        val = new Color[this.width][this.height];       // Matrice de la taille de l'image
+        val = new Color[this.width][this.height]; // Matrice de la taille de l'image
         for ( int i = 0 ; i< width ; i++){
             for ( int j=0 ; j< height; j++){
                 val[i][j] = Color.rgbToColor(image.getRGB(i,j));
@@ -40,7 +35,7 @@ public class Matrix extends BoundingBox {
      * @param fileName Nom que l'utilisateur souhaite donner à l'image rendu
      * @throws IOException
      */
-    public void save(String fileName) throws IOException{
+    /*public void save(String fileName) throws IOException{
         BufferedImage image = new BufferedImage(super.width,super.height, BufferedImage.TYPE_INT_RGB);
         int rgb;
         for (int i = 0; i < width ; i ++){
@@ -51,13 +46,34 @@ public class Matrix extends BoundingBox {
         }
         File output = new File(fileName+".bmp");
         ImageIO.write(image,"bmp",output);
+    }*/
+
+    public void save(String fileName) throws IOException{
+        BufferedImage image = getImage();
+        File output = new File(fileName+".bmp");
+        ImageIO.write(image,"bmp",output);
     }
+
+    public BufferedImage getImage()
+    {
+        BufferedImage image = new BufferedImage(super.width,super.height, BufferedImage.TYPE_INT_RGB);
+        int rgb;
+        for (int i = 0; i < width ; i ++){
+            for (int j =0;j< height;j++){
+                rgb = val[i][j].colorToRgb();
+                image.setRGB(i,j,rgb);
+            }
+        }
+
+        return image;
+    }
+
+
     public void applyMask(Mask mask){
         for(int i = 0 ; i<width ; i++){
             for (int j =0 ; j<height;j++){
                 if(mask.val[i][j]) val[i][j].set(new Color(0,0,0));
             }
         }
-
     }
 }

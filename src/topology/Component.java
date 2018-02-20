@@ -1,8 +1,3 @@
-/**
- * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas
- */
-
-
 package topology;
 
 import java.util.ArrayList;
@@ -11,7 +6,7 @@ public class Component {
 
     private ArrayList<Point> points;
 
-    public Component(Tag t,Point p) throws Exception {
+    public Component(Tag t, Point p) throws Exception {
 
         points=new ArrayList<Point>();
         Point currentPoint=p;

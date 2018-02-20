@@ -1,8 +1,3 @@
-/**
- * <> with heart by Doutel Silva Filipe, Nadaud Sörel and Barbero Lucas
- */
-
-
 package topology;
 
 import java.util.Arrays;
@@ -14,6 +9,7 @@ public class Tag {
     private Boundary boundary;
     private boolean availableSeedPoint = true;
     private boolean isAvailablePoint = true;
+
     public Tag(Boundary b){
         boundary = b;
         index = new int[b.bb.nbEdges];
